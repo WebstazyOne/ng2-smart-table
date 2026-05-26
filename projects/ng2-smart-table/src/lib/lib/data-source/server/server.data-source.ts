@@ -11,7 +11,7 @@ export class ServerDataSource extends LocalDataSource {
 
   protected conf: ServerSourceConf;
 
-  protected lastRequestCount: number = 0;
+  protected lastRequestCount = 0;
 
   constructor(protected http: HttpClient, conf: ServerSourceConf | {} = {}) {
     super();
@@ -70,7 +70,7 @@ export class ServerDataSource extends LocalDataSource {
   }
 
   protected requestElements(): Observable<any> {
-    let httpParams = this.createRequesParams();
+    const httpParams = this.createRequesParams();
     return this.http.get(this.conf.endPoint, { params: httpParams, observe: 'response' });
   }
 
@@ -97,8 +97,8 @@ export class ServerDataSource extends LocalDataSource {
 
     if (this.filterConf.filters) {
       this.filterConf.filters.forEach((fieldConf: any) => {
-        if (fieldConf['search']) {
-          httpParams = httpParams.set(this.conf.filterFieldKey.replace('#field#', fieldConf['field']), fieldConf['search']);
+        if (fieldConf.search) {
+          httpParams = httpParams.set(this.conf.filterFieldKey.replace('#field#', fieldConf.field), fieldConf.search);
         }
       });
     }
@@ -108,9 +108,9 @@ export class ServerDataSource extends LocalDataSource {
 
   protected addPagerRequestParams(httpParams: HttpParams): HttpParams {
 
-    if (this.pagingConf && this.pagingConf['page'] && this.pagingConf['perPage']) {
-      httpParams = httpParams.set(this.conf.pagerPageKey, this.pagingConf['page']);
-      httpParams = httpParams.set(this.conf.pagerLimitKey, this.pagingConf['perPage']);
+    if (this.pagingConf && this.pagingConf.page && this.pagingConf.perPage) {
+      httpParams = httpParams.set(this.conf.pagerPageKey, this.pagingConf.page);
+      httpParams = httpParams.set(this.conf.pagerLimitKey, this.pagingConf.perPage);
     }
 
     return httpParams;

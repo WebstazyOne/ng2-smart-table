@@ -9,21 +9,22 @@ import { cloneDeep } from 'lodash';
  * object as first argument, like this:
  *   deepExtend({}, yourObj_1, [yourObj_N]);
  */
-export const deepExtend = function(...objects: Array<any>): any {
-  if (arguments.length < 1 || typeof arguments[0] !== 'object') {
+export const deepExtend = (...objects: Array<any>): any => {
+  if (objects.length < 1 || typeof objects[0] !== 'object') {
     return false;
   }
 
-  if (arguments.length < 2) {
-    return arguments[0];
+  if (objects.length < 2) {
+    return objects[0];
   }
 
-  const target = arguments[0];
+  const target = objects[0];
 
-  // convert arguments to array and cut off target object
-  const args = Array.prototype.slice.call(arguments, 1);
+  // cut off target object
+  const args = objects.slice(1);
 
-  let val, src;
+  let val;
+  let src;
 
   args.forEach((obj: any) => {
     // skip argument if it is array or isn't object
@@ -31,7 +32,7 @@ export const deepExtend = function(...objects: Array<any>): any {
       return;
     }
 
-    Object.keys(obj).forEach(function (key) {
+    Object.keys(obj).forEach((key) => {
       src = target[key]; // source value
       val = obj[key]; // new value
 

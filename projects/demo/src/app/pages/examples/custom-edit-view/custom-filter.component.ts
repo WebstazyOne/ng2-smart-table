@@ -6,7 +6,7 @@ import { DefaultFilter } from 'ng2-smart-table';
 
 @Component({
   template: `
-    <input 
+    <input
       #number
       [ngClass]="inputClass"
       [formControl]="inputControl"

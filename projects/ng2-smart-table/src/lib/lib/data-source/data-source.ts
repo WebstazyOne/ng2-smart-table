@@ -119,8 +119,8 @@ export abstract class DataSource {
 
   protected emitOnChanged(action: string) {
     this.getElements().then((elements) => this.onChangedSource.next({
-      action: action,
-      elements: elements,
+      action,
+      elements,
       paging: this.getPaging(),
       filter: this.getFilter(),
       sort: this.getSort(),

@@ -6,6 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HeaderComponent {
 
-  @Input() tagline: string = '';
+  @Input() tagline = '';
 
 }

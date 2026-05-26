@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 
-import {FilterDefault} from "./filter-default";
+import {FilterDefault} from './filter-default';
 
 @Component({
   selector: 'default-table-filter',

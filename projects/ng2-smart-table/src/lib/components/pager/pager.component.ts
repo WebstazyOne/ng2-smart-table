@@ -39,7 +39,7 @@ import { DataSource } from '../../lib/data-source/data-source';
             <span class="sr-only">Next</span>
           </a>
         </li>
-        
+
         <li class="ng2-smart-page-item page-item"
         [ngClass]="{disabled: getPage() == getLast()}">
           <a class="ng2-smart-page-link page-link" href="#"
@@ -50,7 +50,7 @@ import { DataSource } from '../../lib/data-source/data-source';
         </li>
       </ul>
     </nav>
-    
+
     <nav *ngIf="perPageSelect && perPageSelect.length > 0" class="ng2-smart-pagination-per-page">
       <label for="per-page">
         Per Page:
@@ -72,7 +72,7 @@ export class PagerComponent implements OnChanges {
 
   protected pages: Array<any>;
   protected page: number;
-  protected count: number = 0;
+  protected count = 0;
   protected perPage: number;
 
   protected dataChangedSub: Subscription;
@@ -104,10 +104,10 @@ export class PagerComponent implements OnChanges {
    * @param changes
    */
   processPageChange(changes: any) {
-    if (changes['action'] === 'prepend') {
+    if (changes.action === 'prepend') {
       this.source.setPage(1);
     }
-    if (changes['action'] === 'append') {
+    if (changes.action === 'append') {
       this.source.setPage(this.getLast());
     }
   }

@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git *)",
+      "Bash(rm -f package-lock.json)",
+      "Bash(npm install *)",
+      "Bash(npx --no-install ng version)",
+      "Bash(npm run *)",
+      "Bash(NODE_OPTIONS=--openssl-legacy-provider npm run build:demo)",
+      "Bash(npx ng *)",
+      "PowerShell($env:NODE_OPTIONS='--openssl-legacy-provider'; npx ng build demo 2>&1 | Select-Object -Last 50)",
+      "PowerShell(npx ng lint 2>&1 | Select-Object -Last 80)",
+      "PowerShell(npm install *)",
+      "PowerShell(npm run *)",
+      "PowerShell(npx tslint --fix --project projects/ng2-smart-table/tsconfig.lib.json --config tslint.json 2>&1 | Select-Object -Last 10)",
+      "PowerShell(Out-File *)"
+    ]
+  }
+}

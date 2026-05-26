@@ -10,10 +10,10 @@ export function compareValues(direction: any, a: any, b: any) {
 
 export class LocalSorter {
 
-  static sort(data: Array<any>, field: string, direction: string, customCompare?: Function): Array<any> {
+  static sort(data: Array<any>, field: string, direction: string, customCompare?: (...args: any[]) => any): Array<any> {
 
     const dir: number = (direction === 'asc') ? 1 : -1;
-    const compare: Function = customCompare ? customCompare : compareValues;
+    const compare: (...args: any[]) => any = customCompare ? customCompare : compareValues;
 
     return data.sort((a, b) => {
       return compare.call(null, dir, a[field], b[field]);
